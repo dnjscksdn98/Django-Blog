@@ -8,6 +8,7 @@ from posts.views import index, blog, post, search
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('tinymce/', include('tinymce.urls')),
     path('', index),
     path('blog/', blog, name='post-list'),
     path('search/', search, name='search'),

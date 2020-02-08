@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+
+from tinymce.models import HTMLField
 # from django.contrib.auth import get_user_model
 
 
@@ -36,6 +38,7 @@ class Post(models.Model):
     thumbnail = models.ImageField()
     category = models.ManyToManyField(Category)
     featured = models.BooleanField(default=False)
+    content = HTMLField()
 
     def __str__(self):
         return self.title
