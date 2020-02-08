@@ -47,7 +47,7 @@
                 <p>{{ post.overview }}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{ post.author.profile_image.url }}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>{{ post.author }}</span></div></a>
+                    <div class="title"><span>{{ post.author.user.username }}</span></div></a>
                   <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} ago</div>
                   <div class="comments"><i class="icon-comment"></i>{{ post.comment.count }}</div>
                 </footer>
@@ -77,7 +77,7 @@
       <div class="container">
         <header> 
           <h2>Latest from the blog</h2>
-          <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p class="text-big">Check out latest news from our best writers.</p>
         </header>
         <div class="row">
           {% for post in latest %}
@@ -104,7 +104,7 @@
         <div class="row">
           <div class="col-md-6">
             <h2>Subscribe to Newsletter</h2>
-            <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-big">Subscribe by Email and get access to free service that provides daily notifications of episode updates from your favorite podcasts.</p>
           </div>
           <div class="col-md-8">
             <div class="form-holder">
