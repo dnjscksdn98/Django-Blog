@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'tinymce',
+    'crispy_forms',
 
     'posts',
     'marketing',
@@ -166,3 +167,7 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
 }
+
+# Crispy forms
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
