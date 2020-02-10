@@ -41,8 +41,10 @@
                     {% for category in post.category.all %}
                     <a href="#">{{ category.title }}</a>
                     {% endfor %}
-                  </div><a href="#">
-                    <h2 class="h4">{{ post.title }}</h2></a>
+                  </div>
+                  <a href="{{ post.get_absolute_url }}">
+                    <h2 class="h4">{{ post.title }}</h2>
+                  </a>
                 </header>
                 <p>{{ post.overview }}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
@@ -75,22 +77,24 @@
     <!-- Latest Posts -->
     <section class="latest-posts"> 
       <div class="container">
-        <header> 
+        <header>
           <h2>Latest from the blog</h2>
           <p class="text-big">Check out latest news from our best writers.</p>
         </header>
         <div class="row">
           {% for post in latest %}
           <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="#"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+            <div class="post-thumbnail"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></<img></div>
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{ post.timestamp }}</div>
                 {% for category in post.category.all %}
                 <div class="category"><a href="#">{{ category.title }}</a></div>
                 {% endfor %}
-              </div><a href="#">
-                <h3 class="h4">{{ post.title }}</h3></a>
+              </div>
+              <a href="{{ post.get_absolute_url }}">
+                <h3 class="h4">{{ post.title }}</h3>
+              </a>
               <p class="text-muted">{{ post.overview }}</p>
             </div>
           </div>
