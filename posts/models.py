@@ -9,6 +9,27 @@ from tinymce.models import HTMLField
 # User = get_user_model()
 
 
+class PostView(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+    post = models.ForeignKey(
+        'Post', related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
+
 class Author(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -32,9 +53,9 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     overview = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
-    comment_count = models.IntegerField(default=0)
-    view_count = models.IntegerField(default=0)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    # comment_count = models.IntegerField(default=0)
+    # view_count = models.IntegerField(default=0)
+    author = models.ForeignKey('Author', on_delete=models.CASCADE)
     thumbnail = models.ImageField()
     category = models.ManyToManyField(Category)
     featured = models.BooleanField(default=False)
@@ -66,14 +87,10 @@ class Post(models.Model):
     def get_comments(self):
         return self.comments.all().order_by('-timestamp')
 
+    @property
+    def view_count(self):
+        return PostView.objects.filter(post=self).count()
 
-class Comment(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    content = models.TextField()
-    post = models.ForeignKey(
-        Post, related_name='comments', on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.username
+    @property
+    def comment_count(self):
+        return Comment.objects.filter(post=self).count()
