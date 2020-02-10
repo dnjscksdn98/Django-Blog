@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count, Q
 from django.views import View
 
-from .models import Post, Author
+from .models import Post, Author, PostView
 from .forms import CommentForm, PostForm
 from marketing.models import Signup
 
@@ -90,13 +90,13 @@ def post(request, id):
     category_count = get_category_count()
     form = CommentForm(request.POST or None)
 
+    PostView.objects.get_or_create(user=request.user, post=post)
+
     if request.method == 'POST':
         if form.is_valid():
             form.instance.user = request.user
             form.instance.post = post
             form.save()
-            post.comment_count += 1
-            post.save()
             return redirect(reverse('post-detail', kwargs={
                 'id': post.id
             }))
