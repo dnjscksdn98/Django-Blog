@@ -138,6 +138,8 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
+LOGIN_REDIRECT_URL = '/'
+
 
 # Tinymce
 
@@ -171,3 +173,9 @@ TINYMCE_DEFAULT_CONFIG = {
 # Crispy forms
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Mail Chimp setup
+
+MAILCHIMP_API_KEY = 'ed5d1df7e6bbba9b770d35b664ae00ad-us4'
+MAILCHIMP_DATA_CENTER = 'us4'
+MAILCHIMP_EMAIL_LIST_ID = '02f5c8250a'
