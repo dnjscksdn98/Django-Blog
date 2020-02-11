@@ -34,7 +34,11 @@
               <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
               </li>
               {% endif %}
-              <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
+              {% if request.user.is_authenticated %}
+              <li class="nav-item"><a href="{% url 'account_logout' %}" class="nav-link ">Logout</a>
+              {% else %}
+              <li class="nav-item"><a href="{% url 'account_login' %}" class="nav-link ">Login</a>
+              {% endif %}
               </li>
             </ul>
             <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>

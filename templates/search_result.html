@@ -5,9 +5,13 @@
 {% block content %}
 
 <h2>This is the results of your search</h2>
-{% for post in queryset %}
-    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-    <br/>
-{% endfor %}
+{% if queryset %}
+    {% for post in queryset %}
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <br/>
+    {% endfor %}
+{% else %}
+<h3>We couldn’t find any posts.</h3>
+{% endif %}
 
 {% endblock content %}
