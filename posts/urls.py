@@ -1,6 +1,7 @@
 from django.urls import path
 
 from .views import index, blog, search, post, post_create, post_update, post_delete
+from marketing.views import email_list_signup
 
 
 urlpatterns = [
@@ -10,5 +11,7 @@ urlpatterns = [
     path('create/', post_create, name='post-create'),
     path('post/<id>/', post, name='post-detail'),
     path('post/<id>/update/', post_update, name='post-update'),
-    path('post/<id>/delete/', post_delete, name='post-delete')
+    path('post/<id>/delete/', post_delete, name='post-delete'),
+
+    path('email_list_signup/', email_list_signup, name='email-list-signup')
 ]

@@ -33,7 +33,7 @@ class CommentForm(forms.ModelForm):
         'name': 'usercomment',
         'id': 'usercomment',
         'rows': '4'
-    }))
+    }), label='')
 
     class Meta:
         model = Comment
