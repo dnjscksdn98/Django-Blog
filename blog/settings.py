@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = '54g(-2ckf$0bvpg=7xr=8&0f4!=k!sjv*d#^w7xi6yv$_s&g(a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -176,6 +176,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Mail Chimp setup
 
-MAILCHIMP_API_KEY = ''
-MAILCHIMP_DATA_CENTER = ''
-MAILCHIMP_EMAIL_LIST_ID = ''
+MAILCHIMP_API_KEY = 'ed5d1df7e6bbba9b770d35b664ae00ad-us4'
+MAILCHIMP_DATA_CENTER = 'us4'
+MAILCHIMP_EMAIL_LIST_ID = '02f5c8250a'
